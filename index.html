@@ -1,12 +1,68 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="light" lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lawyer Website</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Lexington & Associates | Verified Directory</title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;600;700&family=Hanken+Grotesk:wght@400;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container": "#eceef0",
+                        "outline-variant": "#c6c6cd",
+                        "primary": "#000000",
+                        "secondary": "#7a580f",
+                        "background": "#f7f9fb",
+                        "surface": "#f7f9fb",
+                        "on-surface": "#191c1e",
+                        "on-surface-variant": "#45464d",
+                        "primary-container": "#131b2e",
+                        "on-primary": "#ffffff"
+                    },
+                    spacing: {
+                        "margin-desktop": "48px",
+                        "gutter": "24px",
+                        "container-max": "1280px",
+                        "margin-mobile": "16px"
+                    },
+                    fontFamily: {
+                        "headline-md": ["\"Source Serif 4\""],
+                        "body-md": ["Hanken Grotesk"]
+                    }
+                }
+            }
+        }
+    </script>
 </head>
-<body>
-    <h1>Welcome to My Lawyer Website</h1>
+<body class="bg-surface text-on-surface font-body-md">
+    <header class="w-full top-0 sticky z-40 bg-white border-b border-outline-variant">
+        <div class="flex justify-between items-center h-16 px-margin-mobile md:px-margin-desktop w-full max-w-container-max mx-auto">
+            <div class="flex items-center gap-3">
+                <span class="material-symbols-outlined text-primary">gavel</span>
+                <h1 class="font-headline-md text-[20px] font-bold text-primary tracking-tight">Lexington & Associates</h1>
+            </div>
+            <nav class="flex items-center gap-4 text-sm">
+                <a class="text-secondary font-semibold underline" href="lawyer-dashboard.html">Lawyer Workspace</a>
+                <a class="text-secondary font-semibold underline" href="admin-dashboard.html">Admin Workspace</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop pb-24 pt-8">
+        <section class="mb-6">
+            <h2 class="font-headline-md text-3xl font-bold text-on-background mb-2">Verified Professional Directory</h2>
+            <p class="text-on-surface-variant font-medium">Showing <span id="approved-count" class="font-bold text-primary">0</span> verified associates loaded from LocalStorage.</p>
+        </section>
+
+        <section id="directory-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            </section>
+    </main>
+
+    <script src="app.js"></script>
 </body>
 </html>

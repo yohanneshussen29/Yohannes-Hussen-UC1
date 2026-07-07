@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Verification Control Board</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Verification Portal</p>
+          <h1>Admin Dashboard</h1>
+        </div>
+        <div style="display: flex; gap: 10px;">
+          <a class="btn btn-secondary" href="index.html">View Public Directory</a>
+          <a class="btn btn-secondary" href="lawyer-dashboard.html">Go to Lawyer Upload</a>
+        </div>
+      </header>
+
+      <section class="summary-grid">
+        <div class="summary-card">
+          <h2 id="pendingCount">0</h2>
+          <p>Pending Requests</p>
+        </div>
+        <div class="summary-card">
+          <h2 id="approvedCount">0</h2>
+          <p>Approved Requests</p>
+        </div>
+        <div class="summary-card">
+          <h2 id="rejectedCount">0</h2>
+          <p>Rejected Requests</p>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-header">
+          <h2>Inbound Lawyer Profile & CV Requests</h2>
+          <p>Review each applicant's information and CV before verification.</p>
+        </div>
+        <div id="requestsList" class="request-list"></div>
+      </section>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>

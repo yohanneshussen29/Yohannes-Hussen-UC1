@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lawyer Dashboard - Portal</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Document Portal</p>
+          <h1>Lawyer Dashboard</h1>
+        </div>
+        <div style="display: flex; gap: 10px;">
+          <a class="btn btn-secondary" href="index.html">View Public Directory</a>
+          <a class="btn btn-secondary" href="admin-dashboard.html">Go to Admin View</a>
+        </div>
+      </header>
+
+      <section class="panel">
+        <div class="panel-header">
+          <h2>Submit Profile Verification</h2>
+          <p>Upload your information along with your professional CV (PDF file) for admin evaluation.</p>
+        </div>
+        <form id="lawyerRequestForm" class="form-grid">
+          <label>
+            Lawyer Full Name
+            <input type="text" name="lawyerName" placeholder="e.g. John Doe, JD" required />
+          </label>
+          <label>
+            Email Address
+            <input type="email" name="lawyerEmail" placeholder="lawyer@example.com" required />
+          </label>
+          <label>
+            Law Firm / Company
+            <input type="text" name="firmName" placeholder="Lexington Partners" required />
+          </label>
+          <label>
+            Practice Specialty
+            <input type="text" name="specialty" placeholder="e.g. Corporate Law, Family Law" required />
+          </label>
+          <label class="full-width">
+            Professional Summary / Bio
+            <textarea name="requestMessage" rows="3" placeholder="Describe your experience and practice goals..." required></textarea>
+          </label>
+          <label class="full-width">
+            Upload CV Document (PDF Format Only)
+            <input type="file" name="documents" accept="application/pdf" required />
+          </label>
+          <button class="btn btn-primary full-width" type="submit">Submit Request to Admin</button>
+        </form>
+        <p id="formMessage" class="status-message" aria-live="polite"></p>
+      </section>
+
+      <section class="panel">
+        <div class="panel-header">
+          <h2>Your Verification Submission Status</h2>
+          <p>Recent profile requests handled locally via Browser LocalStorage.</p>
+        </div>
+        <div id="lawyerRequests" class="request-list"></div>
+      </section>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
