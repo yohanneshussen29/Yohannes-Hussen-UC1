@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Lawyer Dashboard - Portal</title>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="../styles.css" />
   </head>
   <body>
     <div class="page-shell">
@@ -14,8 +14,8 @@
           <h1>Lawyer Dashboard</h1>
         </div>
         <div style="display: flex; gap: 10px;">
-          <a class="btn btn-secondary" href="index.html">View Public Directory</a>
-          <a class="btn btn-secondary" href="admin-dashboard.html">Go to Admin View</a>
+          <a class="btn btn-secondary" href="../public/index.html">View Public Directory</a>
+          <a class="btn btn-secondary" href="../admin/index.html">Go to Admin View</a>
         </div>
       </header>
 
@@ -53,16 +53,8 @@
         </form>
         <p id="formMessage" class="status-message" aria-live="polite"></p>
       </section>
-
-      <section class="panel">
-        <div class="panel-header">
-          <h2>Your Verification Submission Status</h2>
-          <p>Recent profile requests handled locally via Browser LocalStorage.</p>
-        </div>
-        <div id="lawyerRequests" class="request-list"></div>
-      </section>
     </div>
 
-    <script src="app.js"></script>
+    <script src="../app.js"></script>
   </body>
 </html>

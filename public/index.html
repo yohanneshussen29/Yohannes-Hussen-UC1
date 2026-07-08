@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lawyer Dashboard - Portal</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Hanken Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+        background: #f7f9fb;
+        color: #191c1e;
+        line-height: 1.6;
+        min-height: 100vh;
+      }
+
+      .page-shell {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 24px;
+      }
+
+      .topbar {
+        background: white;
+        padding: 24px 32px;
+        border-radius: 12px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        margin-bottom: 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border: 1px solid #c6c6cd;
+      }
+
+      .eyebrow {
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: #7a580f;
+        font-weight: 600;
+        margin-bottom: 4px;
+      }
+
+      .topbar h1 {
+        font-family: 'Source Serif 4', Georgia, serif;
+        font-size: 28px;
+        font-weight: 600;
+        color: #191c1e;
+      }
+
+      .btn {
+        padding: 10px 20px;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 600;
+        text-decoration: none;
+        cursor: pointer;
+        border: none;
+        transition: all 0.2s ease;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+      }
+
+      .btn-primary {
+        background: #131b2e;
+        color: white;
+      }
+
+      .btn-primary:hover {
+        background: #2d3850;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(19, 27, 46, 0.2);
+      }
+
+      .btn-secondary {
+        background: white;
+        color: #7a580f;
+        border: 1px solid #c6c6cd;
+      }
+
+      .btn-secondary:hover {
+        background: #f7f9fb;
+        border-color: #7a580f;
+      }
+
+      .panel {
+        background: white;
+        border-radius: 12px;
+        padding: 32px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        border: 1px solid #c6c6cd;
+      }
+
+      .panel-header {
+        margin-bottom: 32px;
+        padding-bottom: 24px;
+        border-bottom: 2px solid #eceef0;
+      }
+
+      .panel-header h2 {
+        font-family: 'Source Serif 4', Georgia, serif;
+        font-size: 24px;
+        font-weight: 600;
+        color: #191c1e;
+        margin-bottom: 8px;
+      }
+
+      .panel-header p {
+        color: #45464d;
+        font-size: 14px;
+        line-height: 1.5;
+      }
+
+      .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+      }
+
+      .form-grid label {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        font-size: 14px;
+        font-weight: 600;
+        color: #191c1e;
+      }
+
+      .form-grid .full-width {
+        grid-column: 1 / -1;
+      }
+
+      .form-grid input,
+      .form-grid textarea,
+      .form-grid select {
+        padding: 12px 16px;
+        border: 1px solid #c6c6cd;
+        border-radius: 8px;
+        font-size: 14px;
+        font-family: inherit;
+        transition: all 0.2s ease;
+        background: white;
+        color: #191c1e;
+      }
+
+      .form-grid input:focus,
+      .form-grid textarea:focus,
+      .form-grid select:focus {
+        outline: none;
+        border-color: #131b2e;
+        box-shadow: 0 0 0 3px rgba(19, 27, 46, 0.1);
+      }
+
+      .form-grid input[type="file"] {
+        padding: 10px;
+        background: #f7f9fb;
+        cursor: pointer;
+      }
+
+      .form-grid input[type="file"]::file-selector-button {
+        background: #131b2e;
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 6px;
+        margin-right: 12px;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 13px;
+      }
+
+      .form-grid input[type="file"]::file-selector-button:hover {
+        background: #2d3850;
+      }
+
+      .form-grid textarea {
+        resize: vertical;
+        min-height: 100px;
+      }
+
+      /* Success Message Styling */
+      .form-message {
+        margin-top: 24px;
+        padding: 16px 20px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 14px;
+        font-weight: 500;
+        animation: slideIn 0.3s ease;
+      }
+
+      .form-message.success {
+        background: #d1fae5;
+        color: #065f46;
+        border: 1px solid #6ee7b7;
+      }
+
+      .form-message.error {
+        background: #fee2e2;
+        color: #991b1b;
+        border: 1px solid #fca5a5;
+      }
+
+      .form-message .message-icon {
+        font-size: 20px;
+        flex-shrink: 0;
+      }
+
+      @keyframes slideIn {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .form-grid {
+          grid-template-columns: 1fr;
+        }
+        
+        .topbar {
+          flex-direction: column;
+          gap: 16px;
+          align-items: flex-start;
+          padding: 20px;
+        }
+        
+        .topbar div:last-child {
+          flex-direction: column;
+          width: 100%;
+        }
+        
+        .topbar .btn {
+          width: 100%;
+        }
+
+        .panel {
+          padding: 20px;
+        }
+      }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;600;700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Document Portal</p>
+          <h1>Lawyer Dashboard</h1>
+        </div>
+        <div style="display: flex; gap: 10px;">
+          <a class="btn btn-secondary" href="../public/index.html">📋 View Public Directory</a>
+          <a class="btn btn-secondary" href="../admin/index.html">⚙️ Go to Admin View</a>
+        </div>
+      </header>
+
+      <section class="panel">
+        <div class="panel-header">
+          <h2>Submit Profile Verification</h2>
+          <p>Upload your information along with your professional CV (PDF file) for admin evaluation. Once approved, your profile will be visible in the public directory.</p>
+        </div>
+        <form id="lawyerRequestForm" class="form-grid">
+          <label>
+            👤 Lawyer Full Name
+            <input type="text" name="lawyerName" placeholder="e.g. John Doe, JD" required />
+          </label>
+          <label>
+            📧 Email Address
+            <input type="email" name="lawyerEmail" placeholder="lawyer@example.com" required />
+          </label>
+          <label>
+            🏢 Law Firm / Company
+            <input type="text" name="firmName" placeholder="Lexington Partners" required />
+          </label>
+          <label>
+            ⚖️ Practice Specialty
+            <input type="text" name="specialty" placeholder="e.g. Corporate Law, Family Law" required />
+          </label>
+          <label class="full-width">
+            📝 Professional Summary / Bio
+            <textarea name="requestMessage" rows="3" placeholder="Describe your experience and practice goals..." required></textarea>
+          </label>
+          <label class="full-width">
+            📄 Upload CV Document (PDF Format Only)
+            <input type="file" name="documents" accept="application/pdf" required />
+          </label>
+          <button class="btn btn-primary full-width" type="submit">🚀 Submit Request to Admin</button>
+        </form>
+        <div id="formMessage" class="form-message" style="display: none;" aria-live="polite"></div>
+      </section>
+    </div>
+
+    <script>
+      // Update the form message handling
+      const form = document.getElementById('lawyerRequestForm');
+      const messageBox = document.getElementById('formMessage');
+
+      if (form) {
+        form.addEventListener('submit', async (event) => {
+          event.preventDefault();
+          
+          // Hide message initially
+          if (messageBox) {
+            messageBox.style.display = 'none';
+          }
+
+          // Simulate form submission (replace with your actual submission logic)
+          try {
+            // Your actual form submission logic here
+            // For demo purposes, showing success after 1 second
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            
+            // Show success message
+            if (messageBox) {
+              messageBox.className = 'form-message success';
+              messageBox.innerHTML = `
+                <span class="message-icon">✅</span>
+                <div>
+                  <strong>Submission Successful!</strong><br>
+                  Your CV request has been submitted and is pending admin verification. 
+                  You'll be notified once your profile has been reviewed.
+                </div>
+              `;
+              messageBox.style.display = 'flex';
+            }
+
+            form.reset();
+            
+          } catch (error) {
+            // Show error message
+            if (messageBox) {
+              messageBox.className = 'form-message error';
+              messageBox.innerHTML = `
+                <span class="message-icon">❌</span>
+                <div>
+                  <strong>Submission Failed</strong><br>
+                  There was an error processing your request. Please try again.
+                </div>
+              `;
+              messageBox.style.display = 'flex';
+            }
+          }
+        });
+      }
+    </script>
+  </body>
+</html>
